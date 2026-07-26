@@ -74,26 +74,26 @@ class JobCard extends StatelessWidget {
                       spacing: 4,
                       runSpacing: 4,
                       children: [
+                        const Icon(Icons.location_on_outlined,
+                            size: 14, color: AppColors.textSecondary),
                         Text(job.location,
                             style: const TextStyle(
                                 fontSize: 12,
                                 color: AppColors.textSecondary)),
-                        const Icon(Icons.location_on_outlined,
-                            size: 14, color: AppColors.textSecondary),
-                        const SizedBox(width: 8),
+                        const _MetaDivider(),
+                        const Icon(Icons.groups_2_outlined,
+                            size: 14, color: AppColors.gold),
                         Text('${job.applicants} متقدمين',
                             style: const TextStyle(
                                 fontSize: 12,
                                 color: AppColors.textSecondary)),
-                        const Icon(Icons.groups_2_outlined,
-                            size: 14, color: AppColors.gold),
-                        const SizedBox(width: 8),
+                        const _MetaDivider(),
+                        const Icon(Icons.calendar_today_outlined,
+                            size: 13, color: AppColors.gold),
                         Text(job.date,
                             style: const TextStyle(
                                 fontSize: 12,
                                 color: AppColors.textSecondary)),
-                        const Icon(Icons.calendar_today_outlined,
-                            size: 13, color: AppColors.textSecondary),
                       ],
                     ),
                   ],
@@ -166,6 +166,21 @@ class JobCard extends StatelessWidget {
       minimumSize: Size.zero,
       textStyle: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
       shape: const StadiumBorder(),
+    );
+  }
+}
+
+
+class _MetaDivider extends StatelessWidget {
+  const _MetaDivider();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 1,
+      height: 12,
+      margin: const EdgeInsets.symmetric(horizontal: 4),
+      color: Colors.black26,
     );
   }
 }

@@ -89,73 +89,85 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Stack(
                   children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 45),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+
+                          const Divider(height: 25),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text(job.title,
+                              const Icon(Icons.location_on_outlined,
+                                  size: 14, color: AppColors.textSecondary),
+                              const SizedBox(width: 4),
+                              Text(job.location,
                                   style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16)),
-                              const SizedBox(height: 4),
-                              Text(job.department,
+                                      fontSize: 12,
+                                      color: AppColors.textSecondary)),
+                              const _MetaDivider(),
+                              const Icon(Icons.groups_2_outlined,
+                                  size: 14, color: AppColors.gold),
+                              const SizedBox(width: 4),
+                              Text('${job.applicants} متقدمين',
                                   style: const TextStyle(
-                                      color: AppColors.textSecondary,
-                                      fontSize: 13)),
+                                      fontSize: 12,
+                                      color: AppColors.textSecondary)),
+                              const _MetaDivider(),
+                              const Icon(Icons.calendar_today_outlined,
+                                  size: 13, color: AppColors.gold),
+                              const SizedBox(width: 4),
+                              Text(job.date,
+                                  style: const TextStyle(
+                                      fontSize: 12,
+                                      color: AppColors.textSecondary)),
                             ],
                           ),
-                        ),
-                        const SizedBox(width: 12),
-                        Column(
-                          children: [
-                            StatusBadge.job(job.status),
-                            const SizedBox(height: 8),
-                            Container(
-                              width: 72,
-                              height: 72,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: AppColors.gold,
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                              child:
-                                  const Icon(Icons.add, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ],
+
+                        ],
+                      ),
                     ),
-                    const Divider(height: 32),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(job.location,
-                            style: const TextStyle(
-                                fontSize: 12, color: AppColors.textSecondary)),
-                        const SizedBox(width: 4),
-                        const Icon(Icons.location_on_outlined,
-                            size: 14, color: AppColors.textSecondary),
-                        const SizedBox(width: 12),
-                        Text('${job.applicants} متقدمين',
-                            style: const TextStyle(
-                                fontSize: 12, color: AppColors.textSecondary)),
-                        const SizedBox(width: 4),
-                        const Icon(Icons.groups_2_outlined,
-                            size: 14, color: AppColors.gold),
-                        const SizedBox(width: 12),
-                        Text(job.date,
-                            style: const TextStyle(
-                                fontSize: 12, color: AppColors.textSecondary)),
-                        const SizedBox(width: 4),
-                        const Icon(Icons.calendar_today_outlined,
-                            size: 13, color: AppColors.textSecondary),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(left: 82),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          
+                          Text(job.title,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16)),
+                          const SizedBox(height: 4),
+                          Text(job.department,
+                              style: const TextStyle(
+                                  color: AppColors.textSecondary,
+                                  fontSize: 13)),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      child: Column(
+                        children: [
+                                                                                                  SizedBox(height: 0),
+
+                          StatusBadge.job(job.status),
+                          const SizedBox(height: 6),
+                          Container(
+                            width: 50,
+                            height: 50,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFB9A77A),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            child: const Icon(Icons.add, color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -316,6 +328,20 @@ class _WelcomeCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _MetaDivider extends StatelessWidget {
+  const _MetaDivider();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 1,
+      height: 12,
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      color: Colors.black26,
     );
   }
 }
